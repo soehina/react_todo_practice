@@ -60,11 +60,6 @@ class TodoList extends Component{
     render(){
         return(
             <section>
-                <TodoForm
-                    currentTask={this.state.currentTask}  //TodoFormでvalueに入る
-                    updateTask={this.updateTask}  //taskが追加される
-                    addTask={this.addTask}  //配列に入力した新しいタスクを加える
-                />
                 <ul>
                     {
                         this.state.tasks.map((task,index)=>{
@@ -81,6 +76,11 @@ class TodoList extends Component{
                         })
                     }
                 </ul>
+                <TodoForm
+                    currentTask={this.state.currentTask}  //TodoFormでvalueに入る
+                    updateTask={this.updateTask}  //taskが追加される
+                    addTask={this.addTask}  //配列に入力した新しいタスクを加える
+                />
             </section>
         )
     }
