@@ -1,4 +1,4 @@
-import React,{Component,PropTypes} from 'react';
+import React,{Component} from 'react';
 
 class TodoItem extends Component{
     constructor(props){
@@ -63,12 +63,5 @@ class TodoItem extends Component{
         )
     }
 }
-// TodoItem.propTypes={
-//     clickHandler:React.PropTypes.func.isRequired,
-//     index:React.PropTypes.number.isRequired,
-//     deleteTask:React.PropTypes.func.isRequired,
-//     editTask:React.PropTypes.func.isRequired,
-//     details:React.PropTypes.object.isRequired,
-// }
 
 export default TodoItem;

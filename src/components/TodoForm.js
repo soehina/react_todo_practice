@@ -1,4 +1,4 @@
-import React,{Component,PropTypes} from 'react';
+import React,{Component} from 'react';
 
 class TodoForm extends Component{
     render(){
@@ -14,11 +14,5 @@ class TodoForm extends Component{
         )
     }
 }
-
-// TodoForm.propTypes={
-//     currentTask:React.PropTypes.string.isRequired,
-//     updateTask:React.PropTypes.func.isRequired,
-//     addTask:React.PropTypes.func.isRequired,
-// }
 
 export default TodoForm;
