@@ -5,76 +5,77 @@ import TodoItem from './TodoItem';
 class TodoList extends Component{
     constructor(){
         super();
-        this.changeStatus=this.changeStatus.bind(this);
-        this.updateTask=this.updateTask.bind(this);
-        this.addTask=this.addTask.bind(this);
-        this.deleteTask=this.deleteTask.bind(this);
+        this.changeStatus=this.changeStatus.bind(this);  //タスクの編集
+        this.updateTask=this.updateTask.bind(this); //タスクの追加
+        this.addTask=this.addTask.bind(this);  //タスクのの追加
+        this.deleteTask=this.deleteTask.bind(this);  //タスクの削除
         this.state={
-            tasks:[],
-            currentTask:''
+            tasks:[],  //リストの初期値
+            currentTask:''  //現在のタスクの初期値
         }
     }
+
+    //タスクの削除
     deleteTask(index){
         console.log(index)
         let tasks=this.state.tasks;
         tasks.splice(index,1);
-        this.setState({
-            tasks
-        })
+        this.setState({tasks})
     }
+
+    //タスクの追加
     addTask(evt){
-        evt.preventDefault();
-        let tasks=this.state.tasks;
-        let currentTask=this.state.currentTask;
+        evt.preventDefault(); //リロードを防ぐ
+        let tasks=this.state.tasks;  //配列
+        let currentTask=this.state.currentTask;  //現在のタスク
         tasks.push({
-            name:currentTask,
-            completed:false
+            name:currentTask,  //入力したタスク
+            completed:false  //初期状態では変更してない状態
         })
         this.setState({
-            tasks,
-            currentTask:''
+            tasks,  //配列
+            currentTask:''  //空にする
         })
     }
     updateTask(newValue){
         this.setState({
-            currentTask:newValue.target.value
+            currentTask:newValue.target.value  //現在のタスクの値に新しい内容
         })
     }
+
+    //タスクの編集
     editTask=(index,newValue)=>{
         var tasks=this.state.tasks;
         var task=tasks[index];
         task['name']=newValue;
-        this.setState({
-            tasks
-        })
+        this.setState({tasks})
     }
     changeStatus(index){
         var tasks=this.state.tasks;
         var task=tasks[index];
-        task.completed=!task.completed;
-        this.setState({
-            tasks:tasks
-        })
+        task.completed=!task.completed;  //completedがtrueの状態
+        this.setState({tasks:tasks})
     }
+
     render(){
         return(
             <section>
                 <TodoForm
-                    currentTask={this.state.currentTask}
-                    updateTask={this.updateTask}
-                    addTask={this.addTask}
+                    currentTask={this.state.currentTask}  //TodoFormでvalueに入る
+                    updateTask={this.updateTask}  //taskが追加される
+                    addTask={this.addTask}  //配列に入力した新しいタスクを加える
                 />
                 <ul>
                     {
                         this.state.tasks.map((task,index)=>{
                             return(
                                 <TodoItem
-                                    key={index}
-                                    clickHandle={this.changeStatus}
-                                    index={index}
-                                    deleteTask={this.deleteTask}
-                                    editTask={this.editTask}
-                                    details={task}
+                                    key={index}  //key
+                                    clickHandle={this.changeStatus}  //タスクの編集
+                                    index={index}  //タスクの内容
+                                    deleteTask={this.deleteTask}  //タスクの削除
+                                    editTask={this.editTask}  //タスクの編集
+                                    details={task}  //taskの内容
                                 />
                             )
                         })
