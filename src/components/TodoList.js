@@ -10,16 +10,7 @@ class TodoList extends Component{
         this.addTask=this.addTask.bind(this);
         this.deleteTask=this.deleteTask.bind(this);
         this.state={
-            tasks:[
-                {
-                    name:"Buy Milk",
-                    completed:false
-                },
-                {
-                    name:"Buy Cheees",
-                    completed:false
-                }
-            ],
+            tasks:[],
             currentTask:''
         }
     }
